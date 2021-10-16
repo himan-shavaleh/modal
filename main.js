@@ -1,21 +1,34 @@
 const openModal = document.querySelector('.open');
+const closeModal = document.querySelector('.close');
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+
+const showModal = (el)=>{
+    el.classList.remove('hidden');
+    el.classList.remove('hidden');
+}
+const hideModal = (el)=>{
+    el.classList.add('hidden');
+    el.classList.add('hidden');
+}
+
 openModal.addEventListener('click',function(){
-    document.querySelector('.modal').classList.remove('hidden');
-document.querySelector('.overlay').classList.remove('hidden');
+  showModal(modal);
+  showModal(overlay);
 });
-document.querySelector('.close').addEventListener('click',function(){
-    document.querySelector('.modal').classList.add('hidden');
-    document.querySelector('.overlay').classList.add('hidden');
+closeModal.addEventListener('click',function(){
+    hideModal(modal);
+  hideModal(overlay);
 });
-document.querySelector('.overlay').addEventListener('click',function(){
-    document.querySelector('.modal').classList.add('hidden');
-    document.querySelector('.overlay').classList.add('hidden');
+overlay.addEventListener('click',function(){
+    hideModal(modal);
+  hideModal(overlay);
 });
 
 document.addEventListener('keydown',function(e){
 if(e.key === 'Escape'){
     if(!document.querySelector('.modal').classList.contains('hidden')){
-        document.querySelector('.modal').classList.add('hidden');
-    document.querySelector('.overlay').classList.add('hidden');
+        hideModal(modal);
+  hideModal(overlay);
     }
 }})
